@@ -7,3 +7,7 @@ engines:
       - 645f2632ba377382583fe36adc9fb965
       - 26323397fb494c35fd50ae8c864664b9
 
+ratings:
+  paths:
+    - "**.sh"
+
