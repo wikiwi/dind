@@ -32,7 +32,7 @@ cid=$(docker run -e DOCKER_OPTS='-D' \
            --name dind \
            --privileged \
            -d \
-           ${IMAGE})
+           "${IMAGE}")
 
 # Check if debug mode was set.
 docker run --rm -e DOCKER_HOST='tcp://dind:2375' --net "${NETWORK}" "docker:${DOCKER_VERSION}" docker info | grep "Debug mode (server): true"
