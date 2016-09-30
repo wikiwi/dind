@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eux
 
-DOCKER_VERSION=${DOCKER_VERSION:-1.11}
+DOCKER_VERSION=${DOCKER_VERSION:-1.12}
 IMAGE=${IMAGE:-wikiwi/dind:test}
 NETWORK=${NETWORK:-wikiwi_isolated_nw}
 
