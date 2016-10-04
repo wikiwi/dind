@@ -20,8 +20,6 @@ cleanup_network() {
 }
 
 setup_container() {
-  DOCKER_VERSION=$1
-
   # Build container.
   docker build -t "${IMAGE}" -f "${DOCKER_VERSION}/Dockerfile" "${DOCKER_VERSION}"
 
@@ -48,16 +46,14 @@ cleanup_container() {
 }
 
 run_test() {
-  DOCKER_VERSION=$1
-
   # Check if debug mode was set.
   docker run --rm -e DOCKER_HOST='tcp://dind:2375' --net "${NETWORK}" "docker:${DOCKER_VERSION}" docker info | grep -i "Debug mode (server): true"
 }
 
 setup_network
 
-for VERSION in $DOCKER_VERSIONS; do
-  setup_container $VERSION
-  run_test $VERSION
+for DOCKER_VERSION in $DOCKER_VERSIONS; do
+  setup_container
+  run_test
   cleanup_container
 done
